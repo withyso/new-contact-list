@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Addcontact } from "../views/addcontact";
 
 export const Navbar = () => {
 	return (
@@ -10,6 +11,9 @@ export const Navbar = () => {
 			<div className="ml-auto">
 				<Link to="/demo">
 					<button className="btn btn-primary">Check the Context in action</button>
+				</Link>
+				<Link to="/addcontact">
+					<button className="btn btn-warning">Add contact</button>
 				</Link>
 			</div>
 		</nav>
