@@ -1,6 +1,7 @@
 import React from "react";
 import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
+import { Link } from "react-router-dom";
 
 export const Addcontact = () => (
 	<div className="text-center mt-5">
@@ -19,6 +20,14 @@ export const Addcontact = () => (
                         <p>Phone</p>
                         <input type="tel" placeholder="Enter phone" id="fullphone"></input>
                     </label>
+                    <label> 
+                        <p>Adress</p>
+                        <input type="text" placeholder="Enter the Adress" id="fullname"></input>
+                    </label>        
+                    <input className="btn btn-success" type="submit" value="Save"/>
+                    <Link to="/">
+				        <button className="btn btn-dark"> Back to Agenda </button>
+			        </Link>
                 </form>
             </div>
     </div>
