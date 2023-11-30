@@ -1,6 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			APIURL: 'https://playground.4geeks.com/apis/fake/contact/',
 			demo: [
 				{
 					title: "FIRST",

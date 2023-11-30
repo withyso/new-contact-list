@@ -23,11 +23,14 @@ export const Addcontact = () => (
                     <label> 
                         <p>Adress</p>
                         <input type="text" placeholder="Enter the Adress" id="fullname"></input>
-                    </label>        
-                    <input className="btn btn-success" type="submit" value="Save"/>
-                    <Link to="/">
-				        <button className="btn btn-dark"> Back to Agenda </button>
-			        </Link>
+                    </label>
+                    <div className="buttons">
+                        <input className="btn btn-success" type="submit" value="Save"/>
+                        <Link to="/">
+                            <button className="btn btn-dark"> Back to Agenda </button>
+                        </Link>
+                    </div>
+                    
                 </form>
             </div>
     </div>
