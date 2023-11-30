@@ -2,8 +2,8 @@ import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import React, { useContext, useEffect } from "react";
 import { useState } from "react";
-import  Card  from "../component/Card.jsx";
 import { Context } from "../store/appContext.js";
+import Card from "../component/Card.jsx";
 
 
 export const Home = () => {
