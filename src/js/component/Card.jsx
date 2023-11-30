@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Editcontact } from "../views/editcontact";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Modal } from "./Modal.jsx";
+import { Context } from "../store/appContext.js";
 
 const Card = ({name, address, email, phone,id}) => {
+    const { store, actions } = useContext(Context);
+    const navigate = useNavigate();
 
     return (
         <div className="card mb-3" id={id} key={id} style={{width: "80vw", margin: "auto"}}>
@@ -23,24 +26,25 @@ const Card = ({name, address, email, phone,id}) => {
                 <Link to={`/editcontact/${id}`}>
                     <i className="fa-solid fa-pen-to-square"></i>
                 </Link>
-                <i className="fa-solid fa-trash text-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+                <i className="fa-solid fa-trash text-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i>
             </div>
-            /* Modal */
-            <div classNameName="modal mb-3">
-                <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
-                    <div className="modal-dialog">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
-                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div className="modal-body">
-                                ...
-                            </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" className="btn btn-primary">Save changes</button>
-                            </div>
+            <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="staticBackdropLabel">Delete contact</h5>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div className="modal-body">
+                            Are you sure you want to delete the contact? 
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-dark" data-bs-dismiss="modal">Oh no!</button>
+                            <button type="button" className="btn btn-success" onClick={() => {
+                                console.log(id);
+                                actions.deleteContact(id);
+                                navigate("/");
+                            }}>Yes Baby!</button>
                         </div>
                     </div>
                 </div>

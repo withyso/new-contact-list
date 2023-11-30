@@ -21,7 +21,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// Use getActions to call a function within a fuction
 			deleteContact: async (id) => {
 				try{
-					const response = await fetch(store.APIURL + id , {
+					const response = await fetch('https://playground.4geeks.com/apis/fake/contact/'+ id, {
 						method: "DELETE",
 					});
 					if(response.ok){
