@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Editcontact } from "../views/editcontact";
 import { Link } from "react-router-dom";
+import { Modal } from "./Modal.jsx";
 
 const Card = ({name, address, email, phone,id}) => {
 
@@ -18,13 +19,33 @@ const Card = ({name, address, email, phone,id}) => {
                     <p className="card-text">{phone}</p>
                 </div>
             </div>
-            <div className="col-md-2 d-flex flex-row justify-content-around pt-4 pb-4">
-
+            <div id="buttons" className="col-md-2 d-flex flex-row justify-content-around pt-4 pb-4">
                 <Link to={`/editcontact/${id}`}>
                     <i className="fa-solid fa-pen-to-square"></i>
                 </Link>
-                <i className="fa-solid fa-trash"></i>
+                <i className="fa-solid fa-trash text-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
             </div>
+            /* Modal */
+            <div classNameName="modal mb-3">
+                <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div className="modal-body">
+                                ...
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" className="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
     )

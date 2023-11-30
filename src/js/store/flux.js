@@ -19,16 +19,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
-			getContactsGlobal: async () => {
+			deleteContact: async (id) => {
 				try{
-					const response = await fetch(store.APIURL + "/agenda/yoel_agenda");
-					if(response.status !== 200){
-						console.log("Ha ocurrido un error", error)
-						return
+					const response = await fetch(store.APIURL + id , {
+						method: "DELETE",
+					});
+					if(response.ok){
+						console.log('contacto eliminado')
 					}
-					const body = await response.json();
-					console.log(body);
-					return body;
 				}catch(error){
 					console.log(error);
 				}
