@@ -6,29 +6,47 @@ import { Context } from "../store/appContext";
 import { useContext } from "react";
 
 export const Addcontact = () => {
-    const[newContact, setNewContact] = useState({});
     const { store, actions } = useContext(Context);
+    const[fullName, setFullName] = useState('');
+    const[email, setEmail] = useState('');
+    const[address, setAddress] = useState('');
+    const[phone, setPhone] = useState('');
 
-    const createContact = async (e) => {
+    const newContact = {
+        fullName: fullName,
+        email: email,
+        address: address,
+        phone: phone
+    }
 
-        e.preventDefault();
-        const data = new FormData(e.target);
-        const fullData = Object.fromEntries(data.entries());
-        setNewContact(fullData)
-        console.log(newContact);
-        console.log(newContact.name)
-        e.target.reset();
+    const fullNameHandler = (e) => {
+        setFullName(e.target.value);
+    }
 
+    const emailHandler = (e) => {
+        setEmail(e.target.value);
+    }
+
+    const addressHandler = (e) => {
+        setAddress(e.target.value);
+    }
+
+    const phoneHandler = (e) => {
+        setPhone(e.target.value);
+    }
+
+
+    const createContact = async (contact) => {
         try{
             const response = await fetch(store.APIURL, {
                 method: "POST",
                 body: JSON.stringify(
                     {
-                        full_name: `${newContact.full_name}`,
-                        email: `${newContact.email}`,
-                        agenda_slug: "{agenda_slug}",
-                        address:`${newContact.address}`,
-                        phone:`${newContact.phone}`
+                        full_name: `${contact.fullName}`,
+                        email: `${contact.email}`,
+                        agenda_slug: "yoel_agenda",
+                        address:`${contact.address}`,
+                        phone:`${contact.phone}`
                     }
                 ),
                 headers: { 'Content-type': 'application/json' }
@@ -40,7 +58,6 @@ export const Addcontact = () => {
             console.log(error);
         }
     }
-    
     /*
     const formHandler = (e) => {
         e.preventDefault();
@@ -56,7 +73,13 @@ export const Addcontact = () => {
         <div className="text-center mt-5">
             <h1 className="fs-1">Add a new contact</h1>
                 <div className="Form box">
-                    <form className="form" onSubmit={createContact}>
+                    <form className="form" onSubmit={(e) => {
+                        e.preventDefault();
+                        console.log(newContact)
+                        e.target.reset();
+                        createContact(newContact);
+                    }
+                         }>
                         <label> 
                             <p>Full name</p>
                             <input 
@@ -65,6 +88,7 @@ export const Addcontact = () => {
                                 type="text" 
                                 placeholder="Full name" 
                                 id="full_name"
+                                onChange={fullNameHandler}
                                 required
                                 > 
                             </input>
@@ -77,6 +101,7 @@ export const Addcontact = () => {
                                 type="email" 
                                 placeholder="Enter Email" 
                                 id="fullemail"
+                                onChange={emailHandler}
                                 required
                                 >
                         </input>
@@ -89,6 +114,7 @@ export const Addcontact = () => {
                                 type="tel" 
                                 placeholder="Enter phone" 
                                 id="fullphone"
+                                onChange={phoneHandler}
                                 required
                                 >  
                             </input>
@@ -101,6 +127,7 @@ export const Addcontact = () => {
                                 type="text" 
                                 placeholder="Enter the Adress" 
                                 id="fullname"
+                                onChange={addressHandler}
                                 required
                                 > 
                             </input>

@@ -10,6 +10,7 @@ export const Home = () => {
 	const { store, actions } = useContext(Context);
 	const [contacts, setContacts ] = useState([]);
 
+	
 	const getContacts = async () => {
 		try{
 			const response = await fetch(store.APIURL + "/agenda/yoel_agenda");
@@ -24,6 +25,7 @@ export const Home = () => {
 			console.log(error);
 		}
 	}
+
 
 	const handleContact = async () => {
 		const contactInfo = await getContacts();
