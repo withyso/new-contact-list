@@ -38,7 +38,7 @@ export const Home = () => {
 	
 
 	return (
-		<div className="box text-center bg-light pt-3 pb-4">
+		<div className="box text-center pt-3 pb-4">
 			{
 				contacts.map((item) => (
 					<Card 

@@ -74,7 +74,7 @@ export const Addcontact = () => {
     return(
         <div className="text-center mt-5">
             <h1 className="fs-1">Add a new contact</h1>
-                <div className="Form box">
+                <div className="form-box">
                     <form className="form" onSubmit={(e) => {
                         e.preventDefault();
                         console.log(newContact)
@@ -82,58 +82,62 @@ export const Addcontact = () => {
                         createContact(newContact);
                     }
                          }>
-                        <label> 
-                            <p>Full name</p>
-                            <input 
-                                name="name"
-                                className="form-control"
-                                type="text" 
-                                placeholder="Full name" 
-                                id="full_name"
-                                onChange={fullNameHandler}
-                                required
-                                > 
-                            </input>
-                        </label>        
-                        <label> 
-                            <p>Email</p> 
-                            <input 
-                                name="email"
-                                className="form-control"
-                                type="email" 
-                                placeholder="Enter Email" 
-                                id="fullemail"
-                                onChange={emailHandler}
-                                required
-                                >
-                        </input>
-                        </label>
-                        <label> 
-                            <p>Phone</p>
-                            <input 
-                                name="phone"
-                                className="form-control"
-                                type="tel" 
-                                placeholder="Enter phone" 
-                                id="fullphone"
-                                onChange={phoneHandler}
-                                required
-                                >  
-                            </input>
-                        </label>
-                        <label> 
-                            <p>Adress</p>
-                            <input 
-                                name="address"
-                                className="form-control"
-                                type="text" 
-                                placeholder="Enter the Adress" 
-                                id="fullname"
-                                onChange={addressHandler}
-                                required
-                                > 
-                            </input>
-                        </label>
+                        <div className="name-email row">
+                            <div className="col-md-6">
+                                <label> <p>Full name</p> </label>
+                                <input 
+                                    name="name"
+                                    className="form-control"
+                                    type="text" 
+                                    placeholder="Full name" 
+                                    id="full_name"
+                                    onChange={fullNameHandler}
+                                    required
+                                    > 
+                                </input>
+                            </div> 
+                            <div className="col-md-6">
+                                <label> <p>Email</p> </label>
+                                <input 
+                                    name="email"
+                                    className="form-control"
+                                    type="email" 
+                                    placeholder="Enter Email" 
+                                    id="fullemail"
+                                    onChange={emailHandler}
+                                    required
+                                    >
+                                </input>
+                            </div>
+                        </div> 
+                        <div className="name-email row">
+                            <div className="col-md-6">
+                                <label> <p>Phone</p> </label> 
+                                <input 
+                                    name="phone"
+                                    className="form-control"
+                                    type="tel" 
+                                    placeholder="Enter phone" 
+                                    id="fullphone"
+                                    onChange={phoneHandler}
+                                    required
+                                    >  
+                                </input>
+                            </div>
+                            <div className="col-md-6">
+                                <label> <p>Adress</p> </label>
+                                <input 
+                                    name="address"
+                                    className="form-control"
+                                    type="text" 
+                                    placeholder="Enter the Adress" 
+                                    id="fullname"
+                                    onChange={addressHandler}
+                                    required
+                                    > 
+                                </input>
+                            </div>
+                        </div>
                         <div className="buttons">
                             <input className="btn btn-success" type="submit" value="Save"/>
                             <Link to="/">
