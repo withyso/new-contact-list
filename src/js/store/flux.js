@@ -32,6 +32,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
+			getContacts: async () => {
+				try{
+					const response = await fetch("https://playground.4geeks.com/apis/fake/contact/agenda/yoel_agenda");
+					if(response.status !== 200){
+						console.log("Ha ocurrido un error", error)
+						return
+					}
+					const body = await response.json();
+					console.log(body);
+					return body;
+				}catch(error){
+					console.log(error);
+				}
+			}
+
 		}
 	};
 };

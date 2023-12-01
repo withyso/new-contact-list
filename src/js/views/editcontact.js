@@ -13,7 +13,6 @@ export const Editcontact = () => {
     const[phone, setPhone] = useState('');
     const params = useParams()
     const navigate = useNavigate();
-    console.log(params);
 
     const newContact = {
         fullName: fullName,

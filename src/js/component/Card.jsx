@@ -9,24 +9,24 @@ const Card = ({name, address, email, phone,id}) => {
     const navigate = useNavigate();
 
     return (
-        <div className="card mb-3" id={id} key={id} style={{width: "80vw", margin: "auto"}}>
+        <div className="card" id={id} key={id} style={{width: "85vw", margin: "auto",}}>
         <div className="row g-0">
             <div className="col-md-4 pt-4 pb-4">
-                <img src="https://picsum.photos/200" className="img-fluid rounded-start" alt="..."/>
+                <img src="https://picsum.photos/200" className="img-fluid image" alt="..."/>
             </div>
             <div className="col-md-6">
-                <div className="card-body me-3 pt-4 pb-4">
+                <div className="card-body me-3 pb-4">
                     <h5 className="card-title">{name}</h5>
-                    <p className="card-text">{address}</p>
-                    <p className="card-text">{email}</p>
-                    <p className="card-text">{phone}</p>
+                    <p className="card-text"> <i className="fa-solid fa-location-dot" style={{fontSize: "15px",}}></i> {address}</p>
+                    <p className="card-text"> <i className="fa-solid fa-envelope" style={{fontSize: "15px",}}></i> {email}</p>
+                    <p className="card-text"> <i className="fa-solid fa-phone" style={{fontSize: "15px",}}></i> {phone}</p>
                 </div>
             </div>
-            <div id="buttons" className="col-md-2 d-flex flex-row justify-content-around pt-4 pb-4">
+            <div id="buttons" className="col-md-2 d-flex flex-column gap-3 justify-content-around pt-4 pb-4">
                 <Link to={`/editcontact/${id}`}>
-                    <i className="fa-solid fa-pen-to-square"></i>
+                    <i className="fa-solid fa-pen-to-square text-dark fa-buttons"></i>
                 </Link>
-                <i className="fa-solid fa-trash text-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i>
+                <i className="fa-solid fa-trash text-dark fa-buttons" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i>
             </div>
             <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div className="modal-dialog">
@@ -43,7 +43,6 @@ const Card = ({name, address, email, phone,id}) => {
                             <button type="button" className="btn btn-success" onClick={() => {
                                 console.log(id);
                                 actions.deleteContact(id);
-                                navigate("/");
                             }}>Yes Baby!</button>
                         </div>
                     </div>

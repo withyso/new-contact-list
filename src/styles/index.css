@@ -1,3 +1,43 @@
 /* 
     General Styles
 */
+
+.box{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.card{
+    display: flex;
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.card-body{
+    display: flex;
+    padding-top: 3rem;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.image{
+    border-radius: 10px;
+}
+
+.icons-card{
+    font-size: 10px;
+}
+
+.fa-solid{
+    font-size: 20px;
+}
+
+.fa-buttons{
+    cursor: pointer;
+    transition: color 0.2sg ease;
+}
+
+.fa-buttons:hover{
+    font-size: 35px;
+}

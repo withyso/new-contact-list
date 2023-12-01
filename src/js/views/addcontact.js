@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import FormData from "form-data";
 import "../../styles/home.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { useContext } from "react";
 
@@ -11,6 +11,7 @@ export const Addcontact = () => {
     const[email, setEmail] = useState('');
     const[address, setAddress] = useState('');
     const[phone, setPhone] = useState('');
+    const navigate = useNavigate();
 
     const newContact = {
         fullName: fullName,
@@ -53,6 +54,7 @@ export const Addcontact = () => {
             });
             if(response.ok){
                 console.log('contacto creado')
+                navigate("/");
             }
         }catch(error){
             console.log(error);
