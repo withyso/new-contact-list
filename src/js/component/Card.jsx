@@ -4,9 +4,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { Modal } from "./Modal.jsx";
 import { Context } from "../store/appContext.js";
 
-const Card = ({name, address, email, phone,id}) => {
+const Card = ({name, address, email, phone,id, handleContacts}) => {
     const { store, actions } = useContext(Context);
     const navigate = useNavigate();
+
+    const handlerFunction = async () => {
+        await actions.deleteContact(id);
+        const contactInfo = await actions.getContacts();
+        handleContacts(contactInfo);
+    }
 
     return (
         <div className="card" id={id} key={id} style={{width: "85vw", margin: "auto",}}>
@@ -26,9 +32,9 @@ const Card = ({name, address, email, phone,id}) => {
                 <Link to={`/editcontact/${id}`}>
                     <i className="fa-solid fa-pen-to-square text-dark fa-buttons"></i>
                 </Link>
-                <i className="fa-solid fa-trash text-dark fa-buttons" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i>
+                <i className="fa-solid fa-trash text-dark fa-buttons" data-bs-toggle="modal" data-bs-target={`#staticBackdrop-${id}`}></i>
             </div>
-            <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div className="modal fade" id={`staticBackdrop-${id}`} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -41,9 +47,8 @@ const Card = ({name, address, email, phone,id}) => {
                         <div className="modal-footer">
                             <button type="button" className="btn btn-dark" data-bs-dismiss="modal">Oh no!</button>
                             <button type="button" className="btn btn-success" onClick={() => {
-                                console.log(id);
-                                actions.deleteContact(id);
-                            }}>Yes Baby!</button>
+                                handlerFunction();
+                            }} data-bs-dismiss="modal" >Yes Baby!</button>
                         </div>
                     </div>
                 </div>

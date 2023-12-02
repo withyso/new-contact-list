@@ -42,12 +42,14 @@ export const Home = () => {
 			{
 				contacts.map((item) => (
 					<Card 
-					id={item.id}
-					name={item.full_name} 
-					address={item.address} 
-					phone={item.phone} 
-					email={item.email} 
-					key={item.id} />
+						id={item.id}
+						name={item.full_name} 
+						address={item.address} 
+						phone={item.phone} 
+						email={item.email} 
+						key={item.id} 
+						handleContacts = {setContacts}
+					/>
 				))
 			}
 			

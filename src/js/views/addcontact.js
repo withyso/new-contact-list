@@ -13,27 +13,20 @@ export const Addcontact = () => {
     const[phone, setPhone] = useState('');
     const navigate = useNavigate();
 
-    const newContact = {
-        fullName: fullName,
-        email: email,
-        address: address,
-        phone: phone
-    }
+    const [newContact, setNewContact] = useState({
+        fullName: '',
+        email: '',
+        address: '',
+        phone: ''
+    })
 
-    const fullNameHandler = (e) => {
-        setFullName(e.target.value);
-    }
-
-    const emailHandler = (e) => {
-        setEmail(e.target.value);
-    }
-
-    const addressHandler = (e) => {
-        setAddress(e.target.value);
-    }
-
-    const phoneHandler = (e) => {
-        setPhone(e.target.value);
+    const handleNewContact = (key, value) => {
+        setNewContact((prev)=> {
+            return{
+                ...prev,
+                [key]: value
+            }
+        } )
     }
 
 
@@ -91,7 +84,11 @@ export const Addcontact = () => {
                                     type="text" 
                                     placeholder="Full name" 
                                     id="full_name"
-                                    onChange={fullNameHandler}
+                                    value={newContact.fullName}
+                                    onChange={(event) => {
+                                        handleNewContact('fullName', event.target.value)
+                                    }}
+
                                     required
                                     > 
                                 </input>
@@ -104,7 +101,10 @@ export const Addcontact = () => {
                                     type="email" 
                                     placeholder="Enter Email" 
                                     id="fullemail"
-                                    onChange={emailHandler}
+                                    value={newContact.email}
+                                    onChange={(event) => {
+                                        handleNewContact('email', event.target.value)
+                                    }}
                                     required
                                     >
                                 </input>
@@ -119,7 +119,10 @@ export const Addcontact = () => {
                                     type="tel" 
                                     placeholder="Enter phone" 
                                     id="fullphone"
-                                    onChange={phoneHandler}
+                                    value={newContact.phone}
+                                    onChange={(event) => {
+                                        handleNewContact('phone', event.target.value)
+                                    }}
                                     required
                                     >  
                                 </input>
@@ -132,7 +135,10 @@ export const Addcontact = () => {
                                     type="text" 
                                     placeholder="Enter the Adress" 
                                     id="fullname"
-                                    onChange={addressHandler}
+                                    value={newContact.address}
+                                    onChange={(event) => {
+                                        handleNewContact('address', event.target.value)
+                                    }}
                                     required
                                     > 
                                 </input>
